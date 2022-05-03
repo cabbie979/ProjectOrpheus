@@ -34,7 +34,7 @@ public class EnemyShot : MonoBehaviour
         if (other.CompareTag("Player") && health != null)
         {
             Destroy(gameObject);
-            health.Decrease(_damage);
+            health.ChangeHealth(-_damage);
         }
             
     }

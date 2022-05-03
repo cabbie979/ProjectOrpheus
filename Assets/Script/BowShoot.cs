@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BowShoot : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class BowShoot : MonoBehaviour
     [SerializeField] private float _startTimeBtwShots = 0;
     [SerializeField] private float _gunDistace = 0f;
 
+    public static Action onWin;
+
     private float _timeBtwShots;
 
     private void Start()
     {
-        
+       
         _timeBtwShots = _startTimeBtwShots;
     }
 
@@ -21,9 +24,12 @@ public class BowShoot : MonoBehaviour
     {
         if (TargetSystem.target != null)
         {
-            Gun();
+            Gun(); 
         }
-       
+        else
+        {
+            onWin?.Invoke();
+        }
     }
 
     private void Gun()

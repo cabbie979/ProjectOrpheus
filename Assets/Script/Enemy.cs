@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : Entity
 {
@@ -12,6 +13,8 @@ public class Enemy : Entity
     [SerializeField] private float _startTimeBtwShots = 0;
     [SerializeField] private float _gunDistace = 0f;
     [SerializeField] private GameObject _shotPrefab;
+
+    public static Action onFail;
 
     private float _timeBtwShots;
 
@@ -32,6 +35,10 @@ public class Enemy : Entity
         {
             EnemyDistance();
             EnemyShoot();
+        }
+        else
+        {
+            onFail?.Invoke();
         }
         
     }

@@ -35,7 +35,7 @@ public class Arrow : MonoBehaviour
         if(health != null && other.CompareTag("Enemy"))
         {
             DestroyArrow();
-            health.Decrease(_damage);
+            health.ChangeHealth(-_damage);
         }
 
         if (other.CompareTag("Wall"))

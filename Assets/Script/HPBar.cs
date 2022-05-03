@@ -9,12 +9,10 @@ public class HPBar : MonoBehaviour
 
     [SerializeField] HealthController _health;
 
-    private Camera _camera;
-
     private void Awake()
     {
         _health.HealthChanged += OnHealthChanged;
-        _camera = Camera.main;
+       
     }
 
     private void OnDestroy()
@@ -27,8 +25,5 @@ public class HPBar : MonoBehaviour
         _hpBarFilling.fillAmount = valuePercent;
     }
 
-    private void LateUpdate()
-    {
-        transform.Rotate(0, 180, 0);
-    }
+    
 }

@@ -9,6 +9,8 @@ public class Player : Entity
     [SerializeField] private Joystick joystick;
     [SerializeField] private Animator animator;
 
+    
+
     private Vector2 _dirrection = Vector2.zero;
 
     private Rigidbody2D _rigidbody = null;
@@ -23,8 +25,6 @@ public class Player : Entity
         _animator = GetComponent<Animator>();
         joystick = FindObjectOfType<Joystick>().GetComponent<Joystick>();
     }
-
-    
 
     private void FixedUpdate()
     { 
@@ -56,8 +56,6 @@ public class Player : Entity
         {
             animator.SetBool("isMove", false);
         }
-       
-        
 
         if(_dirrection != Vector2.zero)
         {

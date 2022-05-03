@@ -5,29 +5,32 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+  
     [SerializeField] private int _maxHp = 0;
-    private int _currentHp = 0;
+    public int _currentHp = 0;
 
     public event Action<float> HealthChanged;
+    
 
-    private void ChangeHealth(int value)
+    private void Start()
+    {
+        _currentHp = _maxHp;
+    }
+
+    public void ChangeHealth(int value)
     {
         _currentHp += value;
 
         if (_currentHp <= 0)
         {
             Die();
+            Coin._coin += 10;
         }
         else
         {
             float currentHPPercent = (float)_currentHp / _maxHp;
             HealthChanged?.Invoke(currentHPPercent);
         }
-    }
-
-    public void Decrease(int value)
-    {
-        _currentHp = (int)Mathf.Clamp(_currentHp - value, 0f, _maxHp);
     }
 
     private void Die()
